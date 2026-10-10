@@ -180,7 +180,7 @@ describe("the property inspector", { skip: noBrowser ? "no Chromium in Playwrigh
 				presets: [[1], [MAX_PRESET_SECONDS, 60]],
 				presetIndex: 1,
 				layout: "bar",
-				theme: "mwk",
+				theme: "piy",
 				title: "Tea",
 				showLogo: false,
 				showLabel: false,

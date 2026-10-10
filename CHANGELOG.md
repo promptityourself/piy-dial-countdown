@@ -21,7 +21,30 @@ anybody only in 4.1.0.
 
 ## [Unreleased]
 
+## [4.3.0] — 2026-10-10
+
+### Changed
+
+- **The plugin now carries the Prompt It Yourself brand, which replaces Mate Wish Key.** An idle
+  clock shows the new P|Y mark in the middle of its ring, and the icons in the Stream Deck
+  application, on the keys and in the preferences are drawn from the same mark. The author is now
+  *Prompt It Yourself*, and the plugin's website link goes to
+  [promptityourself.com](https://promptityourself.com/projects/dial-countdown/).
+
+- **The brand colour theme is now called *Prompt It Yourself*.** Its colours did not change. A
+  dial or key already set to the old *Mate Wish Key* theme moves to it on its own, and does not
+  fall back to the default.
+
+  Nothing else moves. The plugin keeps its identifier, so every installed copy updates in place and
+  every configured dial and key keeps its settings.
+
 ### Internal
+
+- **The repository is `promptityourself/piy-dial-countdown`**, renamed from `mwk-dial-countdown`.
+  GitHub does not redirect every old link — an issue under the old name returns 404 — so every link
+  in this file, the docs and the published release notes was rewritten to the new name. Release
+  pages are now written to `pro-piy-dial-countdown/` on the shared drive, since the folder is
+  derived from the remote; the pages already cut stay where they were.
 
 - **A test can import the action subclasses now, and does.** The blocker was never the Stream Deck
   SDK — it imports in under a tenth of a second and needs no connection. It was that the tests ran
@@ -31,7 +54,7 @@ anybody only in 4.1.0.
   `test/actions-live.test.ts` drives the real `DialCountdown` and `KeyCountdown` through their own
   events: rotation, the press that did not turn, the release with no press, the hold on the knob,
   the tap on the glass, the key's double-press window, and a step running out and being silenced
-  while the next one keeps counting. Closes the gap [#12](https://github.com/matewishkey/mwk-dial-countdown/issues/12)
+  while the next one keeps counting. Closes the gap [#12](https://github.com/promptityourself/piy-dial-countdown/issues/12)
   was opened on.
 
   Reintroducing the 4.1.0 bug — the ringing flag set and nothing rendering it — now fails two of
@@ -65,7 +88,7 @@ anybody only in 4.1.0.
   that had been replaced by the morning of the 21st. A re-cut now overwrites the page in place. The
   date is still on the page, under the title, where it cannot multiply. Folders cut before this keep
   their names so the links in old issues still resolve. Closes
-  [#19](https://github.com/matewishkey/mwk-dial-countdown/issues/19).
+  [#19](https://github.com/promptityourself/piy-dial-countdown/issues/19).
 
 - **A failing test no longer takes the whole suite down with it.** The render loop is a 4 Hz
   `setInterval` that nothing unrefs, so an instance left running holds the event loop open and the
@@ -958,7 +981,7 @@ in the ones for the GitHub release.
   3.1.0 — whitespace only, and the packaged manifest parses to the same JSON either way. Recorded
   rather than skipped because `manifest.json` is a file that ships, so a byte comparison against the
   3.1.0 package would show it. Whether an entry like this belongs here at all is
-  [an open question](https://github.com/matewishkey/mwk-dial-countdown/issues/14) —
+  [an open question](https://github.com/promptityourself/piy-dial-countdown/issues/14) —
   `docs/releasing.md` currently says two incompatible things about repo-only work, and *Internal* is
   half an answer to it.
 
@@ -1324,34 +1347,35 @@ First stable release.
 - The manifest version had sat at `0.1.0.0` since the first release, so the Stream Deck application
   reported the same version whichever build was installed. It now tracks the release tag.
 
-[Unreleased]: https://github.com/matewishkey/mwk-dial-countdown/compare/v4.2.0...HEAD
-[4.2.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v4.2.0
-[4.1.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v4.1.0
-[3.11.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.11.0
-[3.10.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.10.0
-[3.9.1]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.9.1
-[3.9.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.9.0
-[3.8.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.8.0
-[3.7.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.7.0
-[3.6.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.6.0
-[3.5.1]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.5.1
-[3.5.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.5.0
-[3.4.2]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.4.2
-[3.4.1]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.4.1
-[3.4.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.4.0
-[3.3.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.3.0
-[3.2.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.2.0
-[3.1.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.1.0
-[3.0.1]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.0.1
-[3.0.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v3.0.0
-[2.0.1]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v2.0.1
-[2.0.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v2.0.0
-[1.5.1]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v1.5.1
-[1.5.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v1.5.0
-[1.4.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v1.4.0
-[1.3.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v1.3.0
-[1.2.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v1.2.0
-[1.1.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v1.1.0
-[1.0.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v1.0.0
-[0.11.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v0.11.0
-[0.10.0]: https://github.com/matewishkey/mwk-dial-countdown/releases/tag/v0.10.0
+[Unreleased]: https://github.com/promptityourself/piy-dial-countdown/compare/v4.3.0...HEAD
+[4.3.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.3.0
+[4.2.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.2.0
+[4.1.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.1.0
+[3.11.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.11.0
+[3.10.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.10.0
+[3.9.1]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.9.1
+[3.9.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.9.0
+[3.8.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.8.0
+[3.7.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.7.0
+[3.6.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.6.0
+[3.5.1]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.5.1
+[3.5.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.5.0
+[3.4.2]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.4.2
+[3.4.1]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.4.1
+[3.4.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.4.0
+[3.3.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.3.0
+[3.2.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.2.0
+[3.1.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.1.0
+[3.0.1]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.0.1
+[3.0.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v3.0.0
+[2.0.1]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v2.0.1
+[2.0.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v2.0.0
+[1.5.1]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v1.5.1
+[1.5.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v1.5.0
+[1.4.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v1.4.0
+[1.3.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v1.3.0
+[1.2.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v1.2.0
+[1.1.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v1.1.0
+[1.0.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v1.0.0
+[0.11.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v0.11.0
+[0.10.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v0.10.0

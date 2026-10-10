@@ -288,11 +288,11 @@ function send(message) {
 /**
  * Names whatever the plugin drew in the middle of the ring.
  *
- * Order matters: the brand mark is two `<path>` elements and the play triangle is one, so the mark
+ * Order matters: the brand mark is two `<path>` elements and a `<rect>`, and the play triangle is one path, so the mark
  * has to be ruled out first or a logo would be read as a play glyph.
  */
 function glyphIn(svg) {
-	if (svg.includes("M0 100")) {
+	if (svg.includes("M44.25 -47.25")) {
 		return "logo";
 	}
 	// The bell is one path and no rects, so none of the counts below would name it — they would
@@ -1007,7 +1007,7 @@ async function runDemo() {
 					warnEnabled: false,
 					showLabel: false,
 					showLogo: true,
-					theme: "mwk"
+					theme: "piy"
 				});
 				await wait(300);
 			}

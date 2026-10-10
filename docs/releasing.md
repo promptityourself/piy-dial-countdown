@@ -44,6 +44,9 @@ say so, and changing one orphans every existing install — the user's configure
 resolving to an action that exists. If an action ever has to change shape incompatibly, add a new one
 and hide the old with `VisibleInActionsList: false`.
 
+The `matewishkey` in them is the brand before Prompt It Yourself, and it stays. 4.3.0 renamed
+everything else; the identifier is the one thing a rebrand cannot reach.
+
 #### …which is why the `-v2` is there, and it is a warning
 
 The original UUID was `com.matewishkey.dial-countdown`. It is unusable now, and not because anything
@@ -302,7 +305,7 @@ version, one folder, whichever day it was cut on. The date is on the page, under
 
 It used to be `<date>_v<version>`, which quietly broke that promise: cutting the same version on two
 days left two folders for it side by side in the index with nothing to say which was current. That
-is [#19](https://github.com/matewishkey/mwk-dial-countdown/issues/19), and it cost a real testing
+is [#19](https://github.com/promptityourself/piy-dial-countdown/issues/19), and it cost a real testing
 session on a superseded build. Folders cut before the change keep their dates — the links to them in
 old issues still work — so the index holds both shapes for a while. **Anything hand-made beside these
 follows the same rule**: name it for the version, not the day.
@@ -406,8 +409,8 @@ submission page had to ship with a caveat instead of an answer.
 
 | Submitted | When | Evidence |
 | --- | --- | --- |
-| 2.0.1 | 2026-08-20 | inferred, not proven — [#15](https://github.com/matewishkey/mwk-dial-countdown/issues/15) reasons about the listing "still showing 2.0.1", which only holds if it went up. The folder on the share is a page prepared *for* the upload, which is not the same as evidence of one |
-| 3.2.0 | 2026-08-31 | comment on [#15](https://github.com/matewishkey/mwk-dial-countdown/issues/15) |
+| 2.0.1 | 2026-08-20 | inferred, not proven — [#15](https://github.com/promptityourself/piy-dial-countdown/issues/15) reasons about the listing "still showing 2.0.1", which only holds if it went up. The folder on the share is a page prepared *for* the upload, which is not the same as evidence of one |
+| 3.2.0 | 2026-08-31 | comment on [#15](https://github.com/promptityourself/piy-dial-countdown/issues/15) |
 
 3.0.0 was tagged and never submitted, which the 3.0.1 changelog entry says outright. **Whether 3.0.1
 itself was submitted is not recorded anywhere and is not known** — a submission page was prepared for

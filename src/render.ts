@@ -94,11 +94,14 @@ export const THEMES: Record<string, Palette> = {
 		track: "#232326"
 	},
 	/**
-	 * Mate Wish Key. Colours are the brand's own dark-mode tokens, taken from the site: red `#e2342b`,
-	 * red-deep `#f0524a`, mute `#a8a2b0`, faint `#8e8896`. The track is the one derived value — brand
-	 * `line` (#232c3a) reads too blue behind red, so it is warmed toward the brand's ink.
+	 * Prompt It Yourself. Colours are the brand's own dark-mode tokens, taken from the site: red
+	 * `#e2342b`, red-deep `#f0524a`, faint `#8e8896`. The track is the one derived value, warmed
+	 * toward the brand's ink so it sits behind red without reading blue.
+	 *
+	 * Stored as `mwk` by every build before 4.3.0, when the brand was Mate Wish Key;
+	 * `normaliseSettings` carries that id across.
 	 */
-	mwk: {
+	piy: {
 		running: "#E2342B",
 		elapsed: "#F0524A",
 		idle: "#8E8896",
@@ -131,7 +134,7 @@ export type RingState = {
 	dimmed: boolean;
 	palette: Palette;
 	/**
-	 * Allow the Mate Wish Key mark in the middle of the ring.
+	 * Allow the Prompt It Yourself mark in the middle of the ring.
 	 *
 	 * Only ever *allow*: the mark is drawn on a clock that is sitting idle and nothing else. See
 	 * {@link centre} for why the state won the argument over the brand.
@@ -180,15 +183,24 @@ const PULSE_STROKE_RATIO = 0.22;
 const PULSE_OPACITY = 0.9;
 
 /**
- * The Mate Wish Key mark, as published in the brand's own `mwk-mark.svg`: an "M" and a "K" stroke.
- * Kept as bare path data so it can be recoloured and scaled to sit inside the ring, rather than
- * embedded as a fixed-colour image.
+ * The Prompt It Yourself mark, as published in the brand's own `piy-mark.svg`: a "P" and a "Y" with
+ * a text cursor standing between them — the "I" that was typed and deleted. Kept as bare geometry so
+ * it can be recoloured and scaled to sit inside the ring, rather than embedded as a fixed-colour
+ * image. The brand fills every part in one colour, never two-tone.
  */
-const MARK_PATHS = ["M0 100 L23.09 0 L46.17 100 L69.26 0 L69.26 100", "M69.26 100 L118.03 0"] as const;
+const MARK_PATHS = [
+	"M44.25 -47.25L44.25 -47.25Q44.25 -52 42.425 -54.85Q40.6 -57.7 37.275 -59Q33.95 -60.3 29.45 -60.3L29.45 -60.3L21.15 -60.3L21.15 -33.45L29.6 -33.45Q33.95 -33.45 37.25 -34.75Q40.55 -36.05 42.4 -39.05Q44.25 -42.05 44.25 -47.25ZM56.45 -47.35L56.45 -47.35Q56.45 -39.3 53.025 -34.3Q49.6 -29.3 43.5 -26.95Q37.4 -24.6 29.5 -24.6L29.5 -24.6L21.15 -24.6L21.15 0L9.55 0L9.55 -69L28.7 -69Q41.7 -69 49.075 -63.675Q56.45 -58.35 56.45 -47.35Z",
+	"M139.85 -69L116.85 -26.35L116.85 0L105.15 0L105.15 -26.25L82.15 -69L94.9 -69L111.25 -36.3L127.7 -69L139.85 -69Z"
+] as const;
 
-/** Native extent of {@link MARK_PATHS}, from the source artwork's viewBox. */
-const MARK_WIDTH = 118.03;
-const MARK_HEIGHT = 100;
+/** The cursor between the letters, in the same coordinates as {@link MARK_PATHS}. */
+const MARK_CURSOR = { x: 64.75, y: -79.35, width: 11.5, height: 89.7 } as const;
+
+/** Extent of the mark, from the source artwork's viewBox: its ink box, letters and cursor. */
+const MARK_LEFT = 9.55;
+const MARK_TOP = -79.35;
+const MARK_WIDTH = 130.3;
+const MARK_HEIGHT = 89.7;
 
 /** Width the mark is drawn at inside the ring, leaving well over the brand's 18% clear space. */
 const MARK_TARGET_WIDTH = 34;
@@ -417,13 +429,14 @@ function bellGlyph({ size, centre: c }: Geometry, colour: string, opacity: numbe
 /** The brand mark, centred in the ring and tinted to match it so the two read as one object. */
 function mark({ centre: c, mark: width }: Geometry, colour: string, opacity: number): string {
 	const scale = width / MARK_WIDTH;
-	const x = c - MARK_WIDTH * scale * 0.5;
-	const y = c - MARK_HEIGHT * scale * 0.5;
-	const stroke = `stroke="${colour}" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none"`;
+	const x = c - MARK_WIDTH * scale * 0.5 - MARK_LEFT * scale;
+	const y = c - MARK_HEIGHT * scale * 0.5 - MARK_TOP * scale;
+	const { x: cx, y: cy, width: cw, height: ch } = MARK_CURSOR;
 
 	return (
-		`<g transform="translate(${round(x)} ${round(y)}) scale(${round(scale)})" opacity="${round(opacity * 0.85)}">` +
-		MARK_PATHS.map((d) => `<path d="${d}" ${stroke}/>`).join("") +
+		`<g transform="translate(${round(x)} ${round(y)}) scale(${round(scale)})" opacity="${round(opacity * 0.85)}" fill="${colour}">` +
+		MARK_PATHS.map((d) => `<path d="${d}"/>`).join("") +
+		`<rect x="${cx}" y="${cy}" width="${cw}" height="${ch}"/>` +
 		`</g>`
 	);
 }

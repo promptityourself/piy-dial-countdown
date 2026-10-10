@@ -1,7 +1,7 @@
 {
 	"Name": "Dial Countdown",
-	"Version": "4.2.0.0",
-	"Author": "Mate Wish Key",
+	"Version": "4.3.0.0",
+	"Author": "Prompt It Yourself",
 	"Actions": [
 		{
 			"Name": "Countdown",
@@ -68,6 +68,6 @@
 		"Version": "24"
 	},
 	"UUID": "com.matewishkey.dial-countdown-v2",
-	"SupportURL": "https://github.com/matewishkey/mwk-dial-countdown/issues",
-	"URL": "https://matewishkey.com/"
+	"SupportURL": "https://github.com/promptityourself/piy-dial-countdown/issues",
+	"URL": "https://promptityourself.com/projects/dial-countdown/"
 }

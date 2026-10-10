@@ -2,14 +2,14 @@
 
 The plugin is [MIT licensed](LICENSE). Two things that licence does not cover:
 
-The Mate Wish Key name, logo and brand colours are trademarks of Mate Wish Key
-and are NOT covered by the MIT licence above. The mark itself is supplied
-artwork, kept at `assets/mwk-mark.svg`; `tools/make-icons.mjs` reads it and
-`src/render.ts` carries the same two paths as a literal, because it is bundled
-and cannot read from disk at runtime.
+The Prompt It Yourself name, logo and brand colours are trademarks of Prompt It
+Yourself and are NOT covered by the MIT licence above. The mark itself is
+supplied artwork, kept at `assets/piy-mark.svg`; `tools/make-icons.mjs` reads it
+and `src/render.ts` carries the same paths and cursor as a literal, because it is
+bundled and cannot read from disk at runtime.
 
 If you fork this plugin, replace that file, the generated artwork in
-`com.matewishkey.dial-countdown-v2.sdPlugin/imgs/`, the `mwk` theme and the mark
+`com.matewishkey.dial-countdown-v2.sdPlugin/imgs/`, the `piy` theme and the mark
 in `src/render.ts` with your own, and change the plugin UUID in `manifest.json`
 so your build does not collide with this one.
 

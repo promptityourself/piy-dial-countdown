@@ -63,8 +63,16 @@ describe("normaliseSettings", () => {
 	});
 
 	it("keeps values that are already good", () => {
-		const good = { ...DEFAULTS, presets: [[30], [90, 15]], presetIndex: 1, theme: "mwk", showLogo: true, volume: 40 };
+		const good = { ...DEFAULTS, presets: [[30], [90, 15]], presetIndex: 1, theme: "piy", showLogo: true, volume: 40 };
 		assert.deepEqual(normaliseSettings(good), good);
+	});
+
+	it("carries the brand theme across its rename from mwk to piy", () => {
+		assert.equal(normaliseSettings({ theme: "mwk" }).theme, "piy");
+		// Positive control: an id that was never renamed passes through untouched, so the line above
+		// is the rename and not every theme being rewritten.
+		assert.equal(normaliseSettings({ theme: "ocean" }).theme, "ocean");
+		assert.equal(normaliseSettings({ theme: "piy" }).theme, "piy");
 	});
 
 	it("is idempotent, so re-saving cannot drift", () => {

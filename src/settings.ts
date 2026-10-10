@@ -98,6 +98,20 @@ export const DEFAULTS: DialCountdownSettings = {
 	fadeRepeats: false
 };
 
+/**
+ * Theme ids that were renamed, old to new. Settings outlive the build that wrote them, so an install
+ * that picked the brand theme while it was still called `mwk` (Mate Wish Key, before 4.3.0) must
+ * come back on the same colours and not fall to the default.
+ */
+const RENAMED_THEMES: Readonly<Record<string, string>> = { mwk: "piy" };
+
+function theme(raw: unknown): string {
+	if (typeof raw !== "string" || raw.length === 0) {
+		return DEFAULTS.theme;
+	}
+	return Object.hasOwn(RENAMED_THEMES, raw) ? RENAMED_THEMES[raw] : raw;
+}
+
 /** Rebuilds a complete, valid settings object from anything at all. Never throws. */
 export function normaliseSettings(raw: unknown): DialCountdownSettings {
 	const input = (typeof raw === "object" && raw !== null ? raw : {}) as Record<string, unknown>;
@@ -108,7 +122,7 @@ export function normaliseSettings(raw: unknown): DialCountdownSettings {
 		presets,
 		presetIndex: clampIndex(input.presetIndex, presets.length),
 		layout: input.layout === "bar" ? "bar" : "ring",
-		theme: typeof input.theme === "string" && input.theme.length > 0 ? input.theme : DEFAULTS.theme,
+		theme: theme(input.theme),
 		title: title(input.title),
 		showLogo: bool(input.showLogo, DEFAULTS.showLogo),
 		// The old name is honoured, since settings outlive the build that wrote them: an install that

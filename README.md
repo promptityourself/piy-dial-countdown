@@ -16,7 +16,7 @@ Every dial and every key holds its own independent timer.
 
 ## Install
 
-Download the latest `.streamDeckPlugin` from [Releases](https://github.com/matewishkey/mwk-dial-countdown/releases) and double-click it. Stream Deck installs it and adds **Dial Countdown** to the actions list; drag **Countdown** onto a dial, or **Countdown (Key)** onto a button.
+Download the latest `.streamDeckPlugin` from [Releases](https://github.com/promptityourself/piy-dial-countdown/releases) and double-click it. Stream Deck installs it and adds **Dial Countdown** to the actions list; drag **Countdown** onto a dial, or **Countdown (Key)** onto a button.
 
 **Upgrading from a version before 2.0.0?** The plugin's identifier changed, so Stream Deck treats this as a different plugin: your existing buttons stop resolving and do not carry over. Remove the old one from Stream Deck's preferences first, then install this and place the actions again. [Why](CHANGELOG.md#200--2026-08-20).
 
@@ -168,7 +168,7 @@ The version lives in three places in three formats — `1.1.0`, `1.1.0.0`, `v1.1
 | `…sdPlugin/layouts/` | `ring.json` and `bar.json` — the two touchscreen layouts, both the plugin's own. |
 | `tools/mock-host.mjs` | A stand-in for the Stream Deck application. |
 | `test/inspector-harness.mjs` | Drives the property inspector in a real browser, so its inline JavaScript can be tested. |
-| `tools/make-icons.mjs` | Draws every icon from `assets/mwk-mark.svg` — white for the app, red for the hardware. The plugin's own icon is the countdown ring, drawn by `renderRing`. Rasterises with headless Chromium; see [docs/releasing.md](docs/releasing.md). |
+| `tools/make-icons.mjs` | Draws every icon from `assets/piy-mark.svg` — white for the app, red for the hardware. The plugin's own icon is the countdown ring, drawn by `renderRing`. Rasterises with headless Chromium; see [docs/releasing.md](docs/releasing.md). |
 | `tools/check-version.mjs` | Holds `package.json`, `manifest.json` and the git tag to the same version. |
 | `tools/release.mjs` | The release, in one command and one order: check, build, pack, validate, demo, tag, push, publish, verify. Writes the page. |
 | `tools/publish-plan.mjs` | What publishing still has to do, and what it must refuse — pure, so every refusal is tested without publishing anything. |
@@ -176,7 +176,7 @@ The version lives in three places in three formats — `1.1.0`, `1.1.0.0`, `v1.1
 | `tools/package-id.mjs` | A reproducible id for a packaged plugin. `pack` stamps the packing time into every entry, so the file's own hash is not reproducible; this hashes the contents instead. |
 | `tsconfig.test.json` | The typecheck config: `src/`, `test/` **and** `tools/`. `tsconfig.json` is rollup's, and covers only what it bundles. |
 | `eslint.config.mjs` | Type-aware lint rules. Formatting is left entirely to Prettier, so the two cannot disagree. |
-| `assets/mwk-mark.svg` | The brand's own mark, as supplied. The one source the artwork is generated from. |
+| `assets/piy-mark.svg` | The brand's own mark, as supplied. The one source the artwork is generated from. |
 
 Constraints that are not obvious from the code, and that a tidy-up would otherwise undo.
 
@@ -196,7 +196,7 @@ Constraints that are not obvious from the code, and that a tidy-up would otherwi
 
 **No audio API exists in the SDK.** `src/sound.ts` hands a file to `afplay` or PowerShell's WPF `MediaPlayer` — chosen over `SoundPlayer`, which cannot set volume. It finds bundled sounds relative to `process.cwd()`, which is the `.sdPlugin` directory at runtime; `test/sound.test.ts` must therefore `chdir` there *before* importing it, hence its dynamic import.
 
-**The mark is read, not transcribed.** `tools/make-icons.mjs` parses `assets/mwk-mark.svg`. `src/render.ts` holds the one unavoidable literal — it is bundled and has no filesystem — and `test/mark.test.ts` asserts the two match path-for-path.
+**The mark is read, not transcribed.** `tools/make-icons.mjs` parses `assets/piy-mark.svg`. `src/render.ts` holds the one unavoidable literal — it is bundled and has no filesystem — and `test/mark.test.ts` asserts the two match path-for-path.
 
 **Icons shown inside the Stream Deck application must be white** — monochromatic `#FFFFFF`, transparent background. A Marketplace submission was rejected on this. A key's `States[].Image` is the button face and keeps the brand red.
 
@@ -208,9 +208,9 @@ Constraints that are not obvious from the code, and that a tidy-up would otherwi
 
 **Tests resolve imports through `test/ts-resolve.mjs`.** `src/` is written for rollup, which fills in file extensions; Node's ESM resolver does not.
 
-## About Mate Wish Key
+## About Prompt It Yourself
 
-This plugin comes out of **[Mate Wish Key](https://matewishkey.com/)** — a show built on one question:
+This plugin comes out of **[Prompt It Yourself](https://promptityourself.com/)** — a show built on one question:
 
 > What can someone who has never written code build in a few hours?
 
@@ -218,10 +218,10 @@ Someone brings a problem out of their business, points an AI agent at it on thei
 
 This plugin was built the same way. Every episode's code is public, and so is this.
 
-- 📺 **YouTube** — [@matewishkey](https://www.youtube.com/@matewishkey)
-- 🟣 **Twitch** — [twitch.tv/matewishkey](https://www.twitch.tv/matewishkey)
-- 🌐 **Site** — [matewishkey.com](https://matewishkey.com/) · [RSS](https://matewishkey.com/rss.xml)
-- ✉️ **Contact** — contact@matewishkey.com
+- 📺 **YouTube** — [@promptityourself](https://www.youtube.com/@promptityourself)
+- 🟣 **Twitch** — [twitch.tv/promptityourself](https://www.twitch.tv/promptityourself)
+- 🌐 **Site** — [promptityourself.com](https://promptityourself.com/) · [RSS](https://promptityourself.com/rss.xml)
+- ✉️ **Contact** — contact@promptityourself.com
 
 ## Contributing
 

@@ -29,7 +29,7 @@
  *
  *   npm run icons
  *
- * The mark is likewise not redrawn: it is read from `assets/mwk-mark.svg`, the brand's own file.
+ * The mark is likewise not redrawn: it is read from `assets/piy-mark.svg`, the brand's own file.
  * SVG is written directly; the PNGs are rasterised by headless Chromium — the copy Playwright
  * already keeps on this machine — rather than ImageMagick, which is not installed and is not
  * something a repo should require for `npm run icons` to work.
@@ -46,7 +46,7 @@ import { renderRing } from "../src/render.ts";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const IMGS = resolve(ROOT, "com.matewishkey.dial-countdown-v2.sdPlugin/imgs");
 
-/** Brand red, as `THEMES.mwk.running` in src/render.ts. Hardware only. */
+/** Brand red, as `THEMES.piy.running` in src/render.ts. Hardware only. */
 const RED = "#E2342B";
 
 /** The one colour the Stream Deck application will accept from an icon. */
@@ -60,56 +60,57 @@ const WHITE = "#FFFFFF";
  * checked. `test/mark.test.ts` holds `src/render.ts` to the same file, which is the copy that has
  * to stay a literal because it is bundled into the plugin.
  */
-const MARK_FILE = resolve(ROOT, "assets/mwk-mark.svg");
-const { paths: MARK_PATHS, width: MARK_WIDTH, height: MARK_HEIGHT, stroke: MARK_STROKE } = readMark();
+const MARK_FILE = resolve(ROOT, "assets/piy-mark.svg");
+const MARK = readMark();
 
 /**
- * Pulls the geometry out of the mark file: the two stroked paths, the weight they are drawn at, and
- * the extent of the artwork inside its padded viewBox. Throws rather than guessing — a silently
- * mis-parsed mark would produce plausible-looking artwork that is subtly the wrong shape.
+ * Pulls the geometry out of the mark file: the two letter paths, the cursor between them, and the
+ * ink box from the viewBox. Throws rather than guessing — a silently mis-parsed mark would produce
+ * plausible-looking artwork that is subtly the wrong shape.
  */
 function readMark() {
 	const svg = readFileSync(MARK_FILE, "utf8");
 
 	const paths = [...svg.matchAll(/\sd="([^"]+)"/g)].map((m) => m[1]);
 	const box = svg.match(/viewBox="(-?[\d.]+) (-?[\d.]+) ([\d.]+) ([\d.]+)"/);
-	const stroke = svg.match(/stroke-width="([\d.]+)"/);
+	const cursor = svg.match(/<rect[^>]*\sx="(-?[\d.]+)" y="(-?[\d.]+)" width="([\d.]+)" height="([\d.]+)"/);
 
-	if (paths.length !== 2 || box === null || stroke === null) {
-		throw new Error(`${MARK_FILE} is not the shape this expects: 2 paths, a viewBox and a stroke-width`);
+	if (paths.length !== 2 || box === null || cursor === null) {
+		throw new Error(`${MARK_FILE} is not the shape this expects: 2 paths, a cursor rect and a viewBox`);
 	}
 
-	// The viewBox is the artwork plus equal padding on every side, so the artwork's own extent is the
-	// box less twice the padding — and the padding is the box's own negative origin.
-	const [, x, y, w, h] = box.map(Number);
-	return { paths, width: w + x * 2, height: h + y * 2, stroke: Number(stroke[1]), pad: -x };
+	const [, x, y, width, height] = box.map(Number);
+	const [, cx, cy, cw, ch] = cursor.map(Number);
+	return { paths, x, y, width, height, cursor: { x: cx, y: cy, width: cw, height: ch } };
 }
 
 const round = (n) => Math.round(n * 100) / 100;
 
-function strokes(colour, width) {
-	return MARK_PATHS.map(
-		(d) =>
-			`<path d="${d}" fill="none" stroke="${colour}" stroke-width="${width}" ` +
-			`stroke-linecap="round" stroke-linejoin="round"/>`
-	).join("");
+/** The mark's shapes, all filled in one colour — the brand never draws it two-tone. */
+function shapes(colour) {
+	const { x, y, width, height } = MARK.cursor;
+	return (
+		MARK.paths.map((d) => `<path d="${d}" fill="${colour}"/>`).join("") +
+		`<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="${colour}"/>`
+	);
 }
 
 /**
- * The bare mark on its own, padded so the round caps are not clipped.
+ * The bare mark on its own, square and centred, with a margin so it sits off the edge of the tile
+ * the application crops to.
  *
  * Sized by `viewBox` rather than by pixels, since this is what Stream Deck scales down to 20px in
- * the action list and up again for a high-DPI display.
+ * the action list and up again for a high-DPI display. Square because every slot it lands in is.
  */
 function bareMark(colour) {
-	const stroke = MARK_STROKE;
-	// Half the stroke would only just clear the round caps; the extra 2 keeps the mark off the edge
-	// of the tile, which is what the application crops to. It reproduces the mark file's own padding.
-	const pad = stroke / 2 + 2;
+	const pad = MARK.width * 0.06;
+	const side = MARK.width + pad * 2;
+	const left = MARK.x - pad;
+	const top = MARK.y - (side - MARK.height) / 2;
 	return (
 		`<svg role="img" xmlns="http://www.w3.org/2000/svg" ` +
-		`viewBox="${-pad} ${-pad} ${round(MARK_WIDTH + pad * 2)} ${round(MARK_HEIGHT + pad * 2)}" fill="none">` +
-		`<title>Mate Wish Key</title>${strokes(colour, stroke)}</svg>`
+		`viewBox="${round(left)} ${round(top)} ${round(side)} ${round(side)}">` +
+		`<title>Prompt It Yourself</title>${shapes(colour)}</svg>`
 	);
 }
 
@@ -122,18 +123,16 @@ function bareMark(colour) {
  */
 function boxedMark(colour, size, markWidth) {
 	const scale = size / 100;
-	const markScale = markWidth / MARK_WIDTH;
+	const markScale = markWidth / MARK.width;
 
 	return [
 		`<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">`,
 		`<rect x="${round(6 * scale)}" y="${round(6 * scale)}" width="${round(88 * scale)}" ` +
 			`height="${round(88 * scale)}" rx="${round(20 * scale)}" fill="none" ` +
 			`stroke="${colour}" stroke-width="${round(7 * scale)}"/>`,
-		`<g transform="translate(${round(size / 2 - markWidth / 2)} ` +
-			`${round(size / 2 - (MARK_HEIGHT * markScale) / 2)}) scale(${round(markScale)})">`,
-		// Inside the scaled group, so this is the weight in the mark's own coordinates — the group's
-		// own scale takes it down to match the square's border rather than swamping it.
-		strokes(colour, 14),
+		`<g transform="translate(${round(size / 2 - markWidth / 2 - MARK.x * markScale)} ` +
+			`${round(size / 2 - (MARK.height * markScale) / 2 - MARK.y * markScale)}) scale(${round(markScale)})">`,
+		shapes(colour),
 		`</g>`,
 		`</svg>`
 	].join("");
