@@ -27,6 +27,9 @@ anybody only in 4.1.0.
   and 3.10.0 titles said "stream deck" and 4.3.0's said "prompt it yourself". It now lowers only the
   first letter. The three published titles were corrected by hand.
 
+- **The licence and the README's trademark line now name Prompt It Yourself.** 4.3.0 missed both:
+  the search that should have found them used `?` in a basic regex, where it matches a literal `?`.
+
 ## [4.3.0] — 2026-10-10
 
 ### Changed

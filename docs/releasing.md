@@ -327,6 +327,15 @@ a shape that can be copied rather than retyped.
 - **Every step's whole output**, downloadable, and the release check's verdict.
 - **The packaged plugin, its content id and its sha256.**
 
+### The store images are a third thing, and they go stale the same way
+
+The thumbnail, gallery and listing icon are not packaged and no release regenerates them. The
+current set is `~/share/work/pro-piy-dial-countdown/2026-10-10_store/`. Its `make-assets.mjs` and
+`pipeline/compose.mjs` draw every timer in the pictures from this repo's own `src/render.ts` and
+layout files, so **re-run them when a release changes what a screen shows**, and re-check the slide
+copy against `docs/how-it-works.md`. The 3.0.1 set described a reset and a repeat mode that 4.0.0
+removed, and it stayed on the listing through ten releases.
+
 ### The listing description is a different field, with a different limit
 
 **The notes and the description are not the same box.** The notes describe one version and are capped

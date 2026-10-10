@@ -233,4 +233,4 @@ If you fork this into your own plugin, change the UUID in `manifest.json` and re
 
 [MIT](LICENSE) — free to use, modify and distribute.
 
-The Mate Wish Key name, logo and brand colours are trademarks and are **not** covered by the MIT licence; `ui/sdpi-components.js` is Elgato's property inspector library, vendored for offline use under its own licence. Both are spelled out in [NOTICE.md](NOTICE.md).
+The Prompt It Yourself name, logo and brand colours are trademarks and are **not** covered by the MIT licence; `ui/sdpi-components.js` is Elgato's property inspector library, vendored for offline use under its own licence. Both are spelled out in [NOTICE.md](NOTICE.md).
