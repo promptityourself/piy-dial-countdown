@@ -61,9 +61,9 @@ There is no hour step. Nothing you dial by hand is four hours long — that is a
 There is no haptic feedback to be had on this hardware — the SDK exposes no such command, and there is no motor to drive if it did. Two things stand in for it, doing different jobs:
 
 - **The ring pulses** on every gesture and every tick of the dial. It says only that *something* registered, which is the part you catch without reading — you cannot read a word per tick, but you can see the ring answer every one of them.
-- **A line names the action** — `+10s`, `start`, `pause`, `resume`, `reset`, `preset · 20m`, `next · 20m` — for about a second, then gives way to the finish time on a dial, or to the preset's length on a key.
+- **A line names the action** — `+10s`, `start`, `pause`, `resume`, `reset`, `silenced`, `preset · 20m`, `next · 20m` — for about a second, then gives way to the finish time on a dial, or to the preset's length on a key.
 
-**[How the dial and the presets work →](docs/how-it-works.md)** — the dial's step model and the presets, and the four designs that came before this one.
+**[How the dial and the presets work →](docs/how-it-works.md)** — the dial's step model and the presets.
 
 ## Features
 
