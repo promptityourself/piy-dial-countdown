@@ -21,6 +21,12 @@ anybody only in 4.1.0.
 
 ## [Unreleased]
 
+### Internal
+
+- **A release title keeps its capitals.** `npm run release` lowered the whole headline, so the 3.9.1
+  and 3.10.0 titles said "stream deck" and 4.3.0's said "prompt it yourself". It now lowers only the
+  first letter. The three published titles were corrected by hand.
+
 ## [4.3.0] — 2026-10-10
 
 ### Changed

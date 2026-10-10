@@ -130,6 +130,22 @@ export function firstSentence(text) {
 	return end === -1 ? text : text.slice(0, end + 1);
 }
 
+/**
+ * A lead as the tail of a release title — `4.3.0 — <this>`: the closing full stop gone, and the
+ * first letter lowered so it reads on from the dash.
+ *
+ * Only the first letter, and only when it opens an ordinary word. Lowering the whole string, which is
+ * what this replaced, put "stream deck" in the 3.10.0 title and "prompt it yourself" in 4.3.0's —
+ * and those titles are what the website lists.
+ *
+ * @param {string} lead
+ * @returns {string}
+ */
+export function titleTail(lead) {
+	const text = lead.replace(/\.$/, "");
+	return /^[A-Z][a-z]/.test(text) ? text[0].toLowerCase() + text.slice(1) : text;
+}
+
 /** The bold lead a changelog bullet opens with, or its first sentence when it has none. */
 /**
  * @param {string} bulletMarkdown

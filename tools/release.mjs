@@ -83,7 +83,15 @@ import { fileURLToPath } from "node:url";
 import { gitState } from "./git-state.mjs";
 import { contentId } from "./package-id.mjs";
 import { plan } from "./publish-plan.mjs";
-import { changelogSection, fitNotes, lead, NOT_FOR_MARKETPLACE, NOTES_LIMIT, parseSection } from "./release-notes.mjs";
+import {
+	changelogSection,
+	fitNotes,
+	lead,
+	NOT_FOR_MARKETPLACE,
+	NOTES_LIMIT,
+	parseSection,
+	titleTail
+} from "./release-notes.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const PLUGIN_UUID = "com.matewishkey.dial-countdown-v2";
@@ -326,7 +334,7 @@ function publish({ state, branch }, notesPath) {
 /** The headline after the version number, taken from the first entry the listing will show. */
 function headline() {
 	const first = forListing[0]?.bullets[0];
-	return first === undefined ? "a new version" : lead(first[0]).replace(/\.$/, "").toLowerCase();
+	return first === undefined ? "a new version" : titleTail(lead(first[0]));
 }
 
 // ── Notes ────────────────────────────────────────────────────────────────────

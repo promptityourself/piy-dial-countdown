@@ -23,7 +23,8 @@ import {
 	NOTES_LIMIT,
 	NOT_FOR_MARKETPLACE,
 	parseSection,
-	plain
+	plain,
+	titleTail
 } from "../tools/release-notes.mjs";
 
 const CHANGELOG = readFileSync(new URL("../CHANGELOG.md", import.meta.url), "utf8");
@@ -227,6 +228,19 @@ describe("the pieces the reduction is built from", () => {
 		assert.equal(firstSentence("One. Two."), "One.");
 		assert.equal(firstSentence("No full stop"), "No full stop");
 		assert.equal(firstSentence("Fixed in 3.1.0 exactly. Then more."), "Fixed in 3.1.0 exactly.");
+	});
+
+	it("lowers only the first letter of a title, so a name keeps its capitals", () => {
+		assert.equal(
+			titleTail("The plugin now carries the Prompt It Yourself brand."),
+			"the plugin now carries the Prompt It Yourself brand"
+		);
+		assert.equal(
+			titleTail("Copy diagnostics names the Stream Deck version"),
+			"copy diagnostics names the Stream Deck version"
+		);
+		// An acronym or a name at the front stays as it is.
+		assert.equal(titleTail("PIY mark on the idle clock."), "PIY mark on the idle clock");
 	});
 
 	it("reads the bold lead a changelog entry opens with", () => {
