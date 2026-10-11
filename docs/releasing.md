@@ -363,7 +363,8 @@ second place to change.** The first is `manifest.json`'s own `Description`, whic
 editing it is a release rather than a copy edit.
 
 The current text is on the share, with its character count and a copy box:
-`~/share/work/pro-piy-dial-countdown/2026-10-10_listing-description/`. Pages from before the 4.3.0
+`~/share/work/pro-piy-dial-countdown/2026-10-11_new-listing/`, with every other field and image the
+new listing takes. Pages from before the 4.3.0
 rebrand are under `mat-mwk-dial-countdown/`, the folder the old remote mapped to.
 
 ### How the notes are cut to 1500 characters
