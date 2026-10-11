@@ -44,7 +44,7 @@ import { fileURLToPath } from "node:url";
 import { renderRing } from "../src/render.ts";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const IMGS = resolve(ROOT, "com.matewishkey.dial-countdown-v2.sdPlugin/imgs");
+const IMGS = resolve(ROOT, "com.promptityourself.dial-it-countdown.sdPlugin/imgs");
 
 /** Brand red, as `THEMES.piy.running` in src/render.ts. Hardware only. */
 const RED = "#E2342B";

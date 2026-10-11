@@ -1,11 +1,11 @@
 {
-	"Name": "Dial Countdown",
-	"Version": "4.5.0.0",
+	"Name": "Dial It Countdown",
+	"Version": "5.0.0.0",
 	"Author": "Prompt It Yourself",
 	"Actions": [
 		{
 			"Name": "Countdown",
-			"UUID": "com.matewishkey.dial-countdown-v2.countdown",
+			"UUID": "com.promptityourself.dial-it-countdown.countdown",
 			"UserTitleEnabled": false,
 			"Icon": "imgs/actions/timer/icon",
 			"Tooltip": "A countdown timer on a dial. Press the dial to start or pause; turn it to adjust by seconds, or push it in and turn to adjust by minutes. Tap the screen to pause or resume, tap twice to reset it to the preset, hold to put the clock right and again for the next preset.",
@@ -31,7 +31,7 @@
 		},
 		{
 			"Name": "Countdown (Key)",
-			"UUID": "com.matewishkey.dial-countdown-v2.key",
+			"UUID": "com.promptityourself.dial-it-countdown.key",
 			"UserTitleEnabled": false,
 			"Icon": "imgs/actions/key/icon",
 			"Tooltip": "The same countdown timer on an ordinary key. Press to pause or resume, press twice to reset it to the preset, hold to put the clock right and again for the next preset.",
@@ -45,10 +45,10 @@
 			]
 		}
 	],
-	"Category": "Dial Countdown",
+	"Category": "Dial It Countdown",
 	"CategoryIcon": "imgs/plugin/category-icon",
 	"CodePath": "bin/plugin.js",
-	"Description": "This plugin has moved: install Dial It Countdown from the Marketplace. This one gets no more updates. Countdown timers for the Stream Deck + dials and for ordinary keys. Tap to pause or resume, tap twice to reset, hold to put the clock right and again for the next preset — and on a dial, press to start or pause, turn to adjust by seconds, or push the dial in and turn to adjust by minutes.",
+	"Description": "Countdown timers for the Stream Deck + dials and for ordinary keys. Tap to pause or resume, tap twice to reset, hold to put the clock right and again for the next preset — and on a dial, press to start or pause, turn to adjust by seconds, or push the dial in and turn to adjust by minutes.",
 	"Icon": "imgs/plugin/marketplace",
 	"SDKVersion": 3,
 	"Software": {
@@ -67,7 +67,7 @@
 	"Nodejs": {
 		"Version": "24"
 	},
-	"UUID": "com.matewishkey.dial-countdown-v2",
+	"UUID": "com.promptityourself.dial-it-countdown",
 	"SupportURL": "https://github.com/promptityourself/piy-dial-countdown/issues",
 	"URL": "https://promptityourself.com/projects/dial-countdown/"
 }

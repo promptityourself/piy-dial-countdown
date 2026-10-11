@@ -24,7 +24,10 @@ import { CUSTOM_SOUND, DEFAULT_SOUND, NO_SOUND } from "../src/settings.ts";
  * the SDK's assumption rather than an extra one of its own — and this is the file that says so out
  * loud, so that anyone who changes it finds out here rather than on a user's machine at 2am.
  */
-const PLUGIN_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "../com.matewishkey.dial-countdown-v2.sdPlugin");
+const PLUGIN_DIR = resolve(
+	dirname(fileURLToPath(import.meta.url)),
+	"../com.promptityourself.dial-it-countdown.sdPlugin"
+);
 process.chdir(PLUGIN_DIR);
 
 const { FADE_AFTER_PLAYS, listSounds, resolveSound, sequence, soundExists, volumeForPlay, wantsSound } =

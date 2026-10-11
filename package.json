@@ -1,12 +1,12 @@
 {
 	"name": "piy-dial-countdown",
-	"version": "4.5.0",
+	"version": "5.0.0",
 	"private": true,
 	"description": "Stream Deck countdown timer for dials and keys, with presets, press-to-pause and double-tap-to-reset.",
 	"type": "module",
 	"scripts": {
 		"build": "rollup -c",
-		"watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.matewishkey.dial-countdown-v2\"",
+		"watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.promptityourself.dial-it-countdown\"",
 		"test": "node --import ./test/ts-resolve.mjs --test --test-timeout=60000 \"test/*.test.ts\"",
 		"typecheck": "tsc -p tsconfig.test.json",
 		"lint": "eslint .",

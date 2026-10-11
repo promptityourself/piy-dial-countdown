@@ -94,7 +94,7 @@ import {
 } from "./release-notes.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const PLUGIN_UUID = "com.matewishkey.dial-countdown-v2";
+const PLUGIN_UUID = "com.promptityourself.dial-it-countdown";
 const PLUGIN_DIR = `${PLUGIN_UUID}.sdPlugin`;
 const PACKAGE = `${PLUGIN_UUID}.streamDeckPlugin`;
 /** What the actions list calls the plugin. Read, not repeated: it has changed name more than once. */

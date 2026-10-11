@@ -34,7 +34,7 @@ type DialInstance = Instance<Dial> & {
 	lastLayout: string | null;
 };
 
-@action({ UUID: "com.matewishkey.dial-countdown-v2.countdown" })
+@action({ UUID: "com.promptityourself.dial-it-countdown.countdown" })
 export class DialCountdown extends CountdownAction<Dial, DialInstance> {
 	protected readonly controller = "Encoder" as const;
 

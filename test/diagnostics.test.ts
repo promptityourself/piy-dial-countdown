@@ -16,7 +16,7 @@ import { describe, it } from "node:test";
 import { collectDiagnostics, streamDeckLogDir } from "../src/diagnostics.ts";
 
 /** The real plugin folder, which is where `manifest.json` lives — the version has to come from it. */
-const PLUGIN_DIR = "com.matewishkey.dial-countdown-v2.sdPlugin";
+const PLUGIN_DIR = "com.promptityourself.dial-it-countdown.sdPlugin";
 
 function logDir(files: Record<string, string>): string {
 	const dir = mkdtempSync(join(tmpdir(), "dial-diag-"));

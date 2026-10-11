@@ -9,7 +9,7 @@ and `src/render.ts` carries the same paths and cursor as a literal, because it i
 bundled and cannot read from disk at runtime.
 
 If you fork this plugin, replace that file, the generated artwork in
-`com.matewishkey.dial-countdown-v2.sdPlugin/imgs/`, the `piy` theme and the mark
+`com.promptityourself.dial-it-countdown.sdPlugin/imgs/`, the `piy` theme and the mark
 in `src/render.ts` with your own, and change the plugin UUID in `manifest.json`
 so your build does not collide with this one.
 

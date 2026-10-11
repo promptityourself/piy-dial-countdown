@@ -1,8 +1,8 @@
 node_modules/
-com.matewishkey.dial-countdown-v2.sdPlugin/bin/
+com.promptityourself.dial-it-countdown.sdPlugin/bin/
 
 # Vendored third-party code — formatted as its author shipped it.
-com.matewishkey.dial-countdown-v2.sdPlugin/ui/sdpi-components.js
+com.promptityourself.dial-it-countdown.sdPlugin/ui/sdpi-components.js
 
 package-lock.json
 

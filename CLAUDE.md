@@ -10,7 +10,7 @@ behaves is [docs/how-it-works.md](docs/how-it-works.md), what changed is
 | --- | --- |
 | `npm run check` | typecheck, lint, format, tests, version agreement. The gate. |
 | `npm test` | tests alone (~30s; `test/inspector.test.ts` drives headless Chromium) |
-| `npm run build` | rollup → `com.matewishkey.dial-countdown-v2.sdPlugin/bin/` |
+| `npm run build` | rollup → `com.promptityourself.dial-it-countdown.sdPlugin/bin/` |
 | `npm run demo` | scripted pass over a real socket against the **built** plugin (~130s) |
 | `npm run mock` | drive the plugin by keyboard, no hardware |
 | `npm run release` | every gate, then tags, pushes and creates the GitHub release; writes the hand-over page |
@@ -29,7 +29,7 @@ it after touching anything in `src/actions/`.
 - `src/actions/` — the SDK-facing half. `countdown-action.ts` is the shared base. They decide *when*
   to draw and how to send it; `src/frame.ts` decides *what* each frame says, and is pure so a test
   can read it.
-- `com.matewishkey.dial-countdown-v2.sdPlugin/` — what ships: manifest, `bin/`, `imgs/`, `layouts/`,
+- `com.promptityourself.dial-it-countdown.sdPlugin/` — what ships: manifest, `bin/`, `imgs/`, `layouts/`,
   `sounds/`, `ui/`. Everything else in the repo is not packaged.
 - `…sdPlugin/ui/dial-countdown.html` — the property inspector, a plain page with inline JS.
 - `tools/` — release, icons, mock host. Typechecked; JSDoc types required where a test imports one.
@@ -40,7 +40,9 @@ These are load-bearing and a tidy-up would undo them. The full list with reasons
 under *How it fits together*; the short version:
 
 - **Never change the plugin or action UUIDs.** A Marketplace identifier stays reserved after a
-  listing is deleted, and changing one orphans every existing install.
+  listing is deleted, and changing one orphans every existing install. 5.0.0 moved to
+  `com.promptityourself.dial-it-countdown` on a new listing, as a new plugin; `docs/releasing.md`
+  has all three UUIDs and why.
 - `setImage` takes a **data URI**, never raw SVG markup.
 - Settings arriving from any build go through `normaliseSettings`; nothing else reads them raw.
 - Frames are re-asserted every 2 s. Awaiting `setFeedbackLayout` does not help.

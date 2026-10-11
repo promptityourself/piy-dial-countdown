@@ -30,7 +30,7 @@ import { fileURLToPath } from "node:url";
 import { WebSocket } from "ws";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const UI = resolve(ROOT, "com.matewishkey.dial-countdown-v2.sdPlugin/ui");
+const UI = resolve(ROOT, "com.promptityourself.dial-it-countdown.sdPlugin/ui");
 
 /** Newest Chromium in Playwright's cache, or `null` if there is none to be had. */
 export function chromiumPath() {

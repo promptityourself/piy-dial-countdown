@@ -21,6 +21,28 @@ anybody only in 4.1.0.
 
 ## [Unreleased]
 
+## [5.0.0] — 2026-10-11
+
+### Changed
+
+- **Dial It Countdown is a new plugin, with its own Marketplace listing.** It has a new identifier,
+  `com.promptityourself.dial-it-countdown`, so Stream Deck treats it as a different plugin from
+  Dial Countdown. **Nothing carries across:** place the actions again and type your presets
+  again. Everything else is 4.5.0: every timer, gesture, setting and the D|C mark.
+
+  Dial Countdown keeps working beside it, under its own name, and gets no more updates. Its
+  settings panel says so. Remove it from Stream Deck's preferences when you no longer need it.
+
+### Internal
+
+- **One test holds every copy of the identifier to the manifest.** `test/identity.test.ts`
+  checks the folder name, both action identifiers, the two `@action` decorators, and the build,
+  release, icon, mock-host, version and CI files. It goes red if one copy is left behind.
+
+- **`docs/releasing.md` records all three identifiers** — the original one (spent when its listing
+  was deleted), `-v2` (frozen at 4.5.0), and this one — and why a rename alone never justifies a
+  new one.
+
 ## [4.5.0] — 2026-10-11
 
 The last release of this plugin. Dial It Countdown carries on as a new plugin with its own
@@ -1395,7 +1417,8 @@ First stable release.
 - The manifest version had sat at `0.1.0.0` since the first release, so the Stream Deck application
   reported the same version whichever build was installed. It now tracks the release tag.
 
-[Unreleased]: https://github.com/promptityourself/piy-dial-countdown/compare/v4.5.0...HEAD
+[Unreleased]: https://github.com/promptityourself/piy-dial-countdown/compare/v5.0.0...HEAD
+[5.0.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v5.0.0
 [4.5.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.5.0
 [4.4.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.4.0
 [4.3.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.3.0

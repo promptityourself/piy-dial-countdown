@@ -61,7 +61,7 @@ jobs:
         run: npm run build
 
       - name: Validate the plugin
-        run: npx streamdeck validate com.matewishkey.dial-countdown-v2.sdPlugin
+        run: npx streamdeck validate com.promptityourself.dial-it-countdown.sdPlugin
 
       - name: Versions agree
         run: npm run version:check

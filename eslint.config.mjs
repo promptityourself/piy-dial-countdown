@@ -19,9 +19,9 @@ import tseslint from "typescript-eslint";
 export default tseslint.config(
 	{
 		ignores: [
-			"com.matewishkey.dial-countdown-v2.sdPlugin/bin/**",
+			"com.promptityourself.dial-it-countdown.sdPlugin/bin/**",
 			// Vendored third party, shipped as its author wrote it.
-			"com.matewishkey.dial-countdown-v2.sdPlugin/ui/sdpi-components.js"
+			"com.promptityourself.dial-it-countdown.sdPlugin/ui/sdpi-components.js"
 		]
 	},
 

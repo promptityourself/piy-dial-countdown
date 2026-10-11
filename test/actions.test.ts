@@ -791,7 +791,7 @@ describe("an alert that is still sounding", () => {
 	 */
 	const CHIME = resolve(
 		dirname(fileURLToPath(import.meta.url)),
-		"../com.matewishkey.dial-countdown-v2.sdPlugin/sounds/chime.wav"
+		"../com.promptityourself.dial-it-countdown.sdPlugin/sounds/chime.wav"
 	);
 
 	/** Settings for a countdown that finishes in one second, with a long alert. */

@@ -39,26 +39,35 @@ Two judgement calls worth writing down, because both have come up:
 
 ### Never change the UUID
 
-`com.matewishkey.dial-countdown-v2` and the two action UUIDs under it are permanent. Elgato's guidelines
-say so, and changing one orphans every existing install — the user's configured buttons stop
-resolving to an action that exists. If an action ever has to change shape incompatibly, add a new one
-and hide the old with `VisibleInActionsList: false`.
+`com.promptityourself.dial-it-countdown` and the two action UUIDs under it (`.countdown`, `.key`) are
+permanent. Elgato's guidelines say so, and changing one orphans every existing install — the user's
+configured buttons stop resolving to an action that exists. If an action ever has to change shape
+incompatibly, add a new one and hide the old with `VisibleInActionsList: false`.
+`test/identity.test.ts` holds the manifest, the decorators, the folder and the tools to one UUID.
 
-The `matewishkey` in them is the brand before Prompt It Yourself, and it stays. 4.3.0 renamed
-everything else; the identifier is the one thing a rebrand cannot reach.
+#### It has changed twice, and each time it was a new plugin
 
-#### …which is why the `-v2` is there, and it is a warning
+| UUID | Releases | What happened to it |
+| --- | --- | --- |
+| `com.matewishkey.dial-countdown` | to 1.5.1 | Spent. The listing was deleted to re-upload from scratch, and the Maker dashboard then rejected the same UUID as "not available or invalid" |
+| `com.matewishkey.dial-countdown-v2` | 2.0.0 to 4.5.0 | Frozen. Its listing stays up; 4.5.0 is its last release, and its settings panel tells users to move |
+| `com.promptityourself.dial-it-countdown` | 5.0.0 on | Current, on a new listing |
 
-The original UUID was `com.matewishkey.dial-countdown`. It is unusable now, and not because anything
-was wrong with it: **Marketplace keeps an identifier reserved after its listing is deleted.** The
-listing was removed to re-upload from scratch, and the Maker dashboard then rejected the same UUID as
-"not available or invalid". It was never invalid — it matches the manifest schema's own pattern
-(`^([a-z0-9-]+)(\.[a-z0-9-]+)+$`) and `streamdeck validate` had always passed it. It was *taken*, by
-the listing that had just been deleted.
+The second change was mate's call on 2026-10-11, when the plugin was renamed Dial It Countdown and
+had to be re-listed anyway. **Nothing carries across a UUID change**: Stream Deck stores each
+button's settings under its action UUID, so a user who moves adds the buttons again and types the
+presets again. That is the price, and it is why this is not done for a rename alone.
+
+#### …and Marketplace never gives a UUID back
+
+`com.matewishkey.dial-countdown` was never invalid — it matches the manifest schema's own pattern
+(`^([a-z0-9-]+)(\.[a-z0-9-]+)+$`) and `streamdeck validate` had always passed it. It was *taken*,
+by the listing that had just been deleted: **Marketplace keeps an identifier reserved after its
+listing is deleted.**
 
 So: **do not delete a Marketplace listing you intend to re-upload.** Update it in place. Deleting
-costs the identifier permanently, and the identifier is the one thing that cannot be changed without
-breaking every install. If a listing must go, treat the UUID as spent.
+costs the identifier permanently. If a listing must go, treat the UUID as spent — and the frozen
+`-v2` listing has no reason to go.
 
 ## The fourth number
 
@@ -83,12 +92,12 @@ The honest test is not a judgement, it is a diff. Build and pack from `main`, th
 what is already published:
 
 ```sh
-npm run build && npx streamdeck pack com.matewishkey.dial-countdown-v2.sdPlugin --force
-npx prettier --write com.matewishkey.dial-countdown-v2.sdPlugin/manifest.json  # pack rewrites it
+npm run build && npx streamdeck pack com.promptityourself.dial-it-countdown.sdPlugin --force
+npx prettier --write com.promptityourself.dial-it-countdown.sdPlugin/manifest.json  # pack rewrites it
 gh release download <last-tag> -D /tmp/released
 
-node tools/package-id.mjs /tmp/released/com.matewishkey.dial-countdown-v2.streamDeckPlugin
-node tools/package-id.mjs com.matewishkey.dial-countdown-v2.streamDeckPlugin
+node tools/package-id.mjs /tmp/released/com.promptityourself.dial-it-countdown.streamDeckPlugin
+node tools/package-id.mjs com.promptityourself.dial-it-countdown.streamDeckPlugin
 ```
 
 Two identical **content ids** mean nothing shipped, so there is no release to cut. `--list` prints

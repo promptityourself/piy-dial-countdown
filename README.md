@@ -18,6 +18,8 @@ Every dial and every key holds its own independent timer.
 
 Download the latest `.streamDeckPlugin` from [Releases](https://github.com/promptityourself/piy-dial-countdown/releases) and double-click it. Stream Deck installs it and adds **Dial It Countdown** to the actions list; drag **Countdown** onto a dial, or **Countdown (Key)** onto a button.
 
+**Coming from Dial Countdown?** Dial It Countdown is a new plugin with its own identifier, so nothing carries across: place the actions again and type your presets again. Dial Countdown keeps working beside it, with no more updates, and you can remove it from Stream Deck's preferences when you are done. [Why](CHANGELOG.md#500--2026-10-11).
+
 **Upgrading from a version before 2.0.0?** The plugin's identifier changed, so Stream Deck treats this as a different plugin: your existing buttons stop resolving and do not carry over. Remove the old one from Stream Deck's preferences first, then install this and place the actions again. [Why](CHANGELOG.md#200--2026-08-20).
 
 ## Gestures
@@ -88,7 +90,7 @@ Stream Deck runs on macOS and Windows only, so the plugin cannot be *run* on Lin
 
 ```sh
 npm install
-npm run build      # bundle into com.matewishkey.dial-countdown-v2.sdPlugin/bin
+npm run build      # bundle into com.promptityourself.dial-it-countdown.sdPlugin/bin
 npm test           # the suite; 53 of its tests drive the property inspector in a browser
 npm run check      # everything CI runs: typecheck, lint, format, tests, versions
 npm run demo       # scripted gesture pass, prints one frame per step
@@ -114,7 +116,7 @@ The plugin process is launched with its `.sdPlugin` directory as the working dir
 
 ```sh
 npx streamdeck dev                                  # enable developer mode, once
-npx streamdeck link com.matewishkey.dial-countdown-v2.sdPlugin
+npx streamdeck link com.promptityourself.dial-it-countdown.sdPlugin
 npm run watch                                       # rebuild + restart on save
 ```
 
