@@ -312,6 +312,10 @@ gitignored, so there is no copy of the right build left to put back.
 shows. **The folder is named for the version alone, so a re-cut overwrites the page in place** — one
 version, one folder, whichever day it was cut on. The date is on the page, under the title.
 
+**Check that `~/share` is mounted before you hand over the link** — `findmnt ~/share` shows `cifs`.
+`~/share` is an automount, and when the mount fails it is a plain local folder, so on 2026-10-11 the
+run wrote the v4.4.0 page to local disk with no error, and the link was dead.
+
 It used to be `<date>_v<version>`, which quietly broke that promise: cutting the same version on two
 days left two folders for it side by side in the index with nothing to say which was current. That
 is [#19](https://github.com/promptityourself/piy-dial-countdown/issues/19), and it cost a real testing
@@ -364,8 +368,10 @@ editing it is a release rather than a copy edit.
 
 The current text is on the share, with its character count and a copy box:
 `~/share/work/pro-piy-dial-countdown/2026-10-11_new-listing/`, with every other field and image the
-new listing takes. Pages from before the 4.3.0
-rebrand are under `mat-mwk-dial-countdown/`, the folder the old remote mapped to.
+new listing takes. The frozen Dial Countdown listing has its own last text, which only sends its
+users to the new plugin: `2026-10-11_old-listing/`, for after the new listing is approved. Pages
+from before the 4.3.0 rebrand are under `mat-mwk-dial-countdown/`, the folder the old remote mapped
+to.
 
 ### How the notes are cut to 1500 characters
 
@@ -431,6 +437,7 @@ submission page had to ship with a caveat instead of an answer.
 | --- | --- | --- |
 | 2.0.1 | 2026-08-20 | inferred, not proven — [#15](https://github.com/promptityourself/piy-dial-countdown/issues/15) reasons about the listing "still showing 2.0.1", which only holds if it went up. The folder on the share is a page prepared *for* the upload, which is not the same as evidence of one |
 | 3.2.0 | 2026-08-31 | comment on [#15](https://github.com/promptityourself/piy-dial-countdown/issues/15) |
+| 5.0.0 | 2026-10-11 | the **new** listing, `com.promptityourself.dial-it-countdown` — mate in session: "oke submitted". He did not name the listing; the new one is inferred from the order the pages give, since 4.5.0 waits for its approval |
 
 3.0.0 was tagged and never submitted, which the 3.0.1 changelog entry says outright. **Whether 3.0.1
 itself was submitted is not recorded anywhere and is not known** — a submission page was prepared for

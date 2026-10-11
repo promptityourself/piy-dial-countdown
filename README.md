@@ -20,8 +20,6 @@ Download the latest `.streamDeckPlugin` from [Releases](https://github.com/promp
 
 **Coming from Dial Countdown?** Dial It Countdown is a new plugin with its own identifier, so nothing carries across: place the actions again and type your presets again. Dial Countdown keeps working beside it, with no more updates, and you can remove it from Stream Deck's preferences when you are done. [Why](CHANGELOG.md#500--2026-10-11).
 
-**Upgrading from a version before 2.0.0?** The plugin's identifier changed, so Stream Deck treats this as a different plugin: your existing buttons stop resolving and do not carry over. Remove the old one from Stream Deck's preferences first, then install this and place the actions again. [Why](CHANGELOG.md#200--2026-08-20).
-
 ## Gestures
 
 The same three gestures on both actions — the touchscreen on a dial, the button itself on a key:
@@ -161,6 +159,7 @@ The version lives in three places in three formats — `1.1.0`, `1.1.0.0`, `v1.1
 | `src/gestures.ts` | Turns raw presses into `toggle` / `reset` / `next`, double taps included. |
 | `src/feedback.ts` | How long a gesture is acknowledged for, and in what words. |
 | `src/label.ts` | The line under the clock — the rule both controls share, and how each narrows it. |
+| `src/frame.ts` | What each control puts on screen, as a value — the dial's feedback and the key face. Pure, so a test asserts what is shown rather than a flag behind it. |
 | `src/countdown.ts` | Everything a countdown *is*, minus the Stream Deck — shared by both actions. |
 | `src/actions/countdown-action.ts` | The half of an action that does not care which control it is on. |
 | `src/actions/dial-countdown.ts` | Dial events, and the touchscreen layout. |
