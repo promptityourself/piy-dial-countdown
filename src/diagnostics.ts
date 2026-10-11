@@ -87,13 +87,20 @@ export function streamDeckLogDir(
 	return null;
 }
 
-/** The plugin's own version, read from the manifest beside it rather than duplicated in the source. */
-function pluginVersion(pluginDir: string): string {
+/**
+ * The plugin's own name and version, read from the manifest beside it rather than duplicated in the
+ * source. The name is read too because it has changed more than once, and a report has to say which
+ * plugin it came from when both are installed.
+ */
+function pluginIdentity(pluginDir: string): string {
 	try {
-		const manifest = JSON.parse(readFileSync(join(pluginDir, "manifest.json"), "utf8")) as { Version?: string };
-		return manifest.Version ?? "unknown";
+		const manifest = JSON.parse(readFileSync(join(pluginDir, "manifest.json"), "utf8")) as {
+			Name?: string;
+			Version?: string;
+		};
+		return `${manifest.Name ?? "unknown plugin"} ${manifest.Version ?? "unknown"}`;
 	} catch {
-		return "unknown";
+		return "unknown plugin unknown";
 	}
 }
 
@@ -134,7 +141,7 @@ export function collectDiagnostics(
 	host: HostInfo = {}
 ): string {
 	const lines: string[] = [];
-	lines.push(`Dial It Countdown ${pluginVersion(pluginDir)}`);
+	lines.push(pluginIdentity(pluginDir));
 	// `process.version` is Node's. `os.version()` is the KERNEL's, and on Linux it reads as a
 	// plausible Node version while being nothing of the sort — it printed `node #139-Ubuntu SMP` here.
 	lines.push(

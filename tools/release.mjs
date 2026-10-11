@@ -97,6 +97,8 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const PLUGIN_UUID = "com.matewishkey.dial-countdown-v2";
 const PLUGIN_DIR = `${PLUGIN_UUID}.sdPlugin`;
 const PACKAGE = `${PLUGIN_UUID}.streamDeckPlugin`;
+/** What the actions list calls the plugin. Read, not repeated: it has changed name more than once. */
+const PLUGIN_NAME = JSON.parse(readFileSync(resolve(ROOT, PLUGIN_DIR, "manifest.json"), "utf8")).Name;
 
 const args = process.argv.slice(2);
 const flag = (name) => args.includes(`--${name}`);
@@ -432,7 +434,7 @@ const html = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dial It Countdown v${version}</title>
+<title>${PLUGIN_NAME} v${version}</title>
 <style>
 	:root { color-scheme: dark; }
 	body { background: #131316; color: #d8d8d8; font: 15px/1.6 system-ui, sans-serif; margin: 0; padding: 32px 24px 64px; }
@@ -467,7 +469,7 @@ const html = `<!doctype html>
 <body>
 <main>
 
-<h1>Dial It Countdown v${version}</h1>
+<h1>${PLUGIN_NAME} v${version}</h1>
 <p class="sub">${today} · <span class="verdict ${failed.length === 0 ? "pass" : "fail"}">${
 	failed.length === 0 ? "all gates passed" : `${failed.length} gate${failed.length === 1 ? "" : "s"} failed`
 }</span></p>
@@ -583,7 +585,7 @@ ${
 
 writeFileSync(resolve(out, "report.html"), html);
 
-const readme = `# Dial It Countdown v${version} — release page :package:
+const readme = `# ${PLUGIN_NAME} v${version} — release page :package:
 
 ${failed.length === 0 ? ":white_check_mark: All gates passed." : `:x: ${failed.length} gate(s) failed: ${failed.map((g) => g.label).join(", ")}.`}
 

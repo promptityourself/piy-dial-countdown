@@ -8,7 +8,7 @@
  */
 
 import assert from "node:assert/strict";
-import { mkdtempSync, writeFileSync, utimesSync } from "node:fs";
+import { mkdtempSync, readFileSync, writeFileSync, utimesSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, sep } from "node:path";
 import { describe, it } from "node:test";
@@ -36,8 +36,13 @@ describe("the diagnostics report", () => {
 	it("names the build and the machine, so a report can be acted on without asking twice", () => {
 		const report = collectDiagnostics(logDir({ "a.log": "WARN  something went wrong\n" }), PLUGIN_DIR);
 
-		// The real manifest, so this also proves the version is READ rather than defaulted to "unknown".
-		assert.match(report, /^Dial It Countdown \d+\.\d+\.\d+\.\d+/m, `the shipped version must be named: ${report}`);
+		// The real manifest, so this also proves the name and version are READ rather than defaulted.
+		const { Name, Version } = JSON.parse(readFileSync(join(PLUGIN_DIR, "manifest.json"), "utf8")) as {
+			Name: string;
+			Version: string;
+		};
+		assert.match(Version, /^\d+\.\d+\.\d+\.\d+$/, `precondition: the manifest carries a version: ${Version}`);
+		assert.equal(report.split("\n")[0], `${Name} ${Version}`, `the shipped plugin must be named: ${report}`);
 		assert.match(report, /\d+ cores/, "the machine's size matters for every per-control cost");
 		assert.match(report, /node v\d+/, "and Node's own version, not the kernel's");
 	});

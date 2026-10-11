@@ -21,6 +21,26 @@ anybody only in 4.1.0.
 
 ## [Unreleased]
 
+## [4.5.0] — 2026-10-11
+
+The last release of this plugin. Dial It Countdown carries on as a new plugin with its own
+Marketplace listing.
+
+### Changed
+
+- **The plugin says it has moved.** The settings panel opens with a notice: install *Dial It
+  Countdown* from the Marketplace, because this plugin gets no more updates. The listing
+  description says the same. Every timer, setting and button keeps working as before.
+
+- **The name is Dial Countdown again.** 4.4.0 renamed it to Dial It Countdown, but that name now
+  belongs to the new plugin. With both installed, the actions list shows two different names.
+
+### Internal
+
+- **The diagnostics report and the release page read the plugin's name from the manifest**, as they
+  already read its version. The name changed three times in two days, and each change had to find
+  every copy.
+
 ## [4.4.0] — 2026-10-11
 
 ### Changed
@@ -1375,7 +1395,8 @@ First stable release.
 - The manifest version had sat at `0.1.0.0` since the first release, so the Stream Deck application
   reported the same version whichever build was installed. It now tracks the release tag.
 
-[Unreleased]: https://github.com/promptityourself/piy-dial-countdown/compare/v4.4.0...HEAD
+[Unreleased]: https://github.com/promptityourself/piy-dial-countdown/compare/v4.5.0...HEAD
+[4.5.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.5.0
 [4.4.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.4.0
 [4.3.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.3.0
 [4.2.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.2.0
