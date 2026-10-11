@@ -1,6 +1,6 @@
 {
-	"Name": "Dial Countdown",
-	"Version": "4.3.0.0",
+	"Name": "Dial It Countdown",
+	"Version": "4.4.0.0",
 	"Author": "Prompt It Yourself",
 	"Actions": [
 		{
@@ -45,7 +45,7 @@
 			]
 		}
 	],
-	"Category": "Dial Countdown",
+	"Category": "Dial It Countdown",
 	"CategoryIcon": "imgs/plugin/category-icon",
 	"CodePath": "bin/plugin.js",
 	"Description": "Countdown timers for the Stream Deck + dials and for ordinary keys. Tap to pause or resume, tap twice to reset, hold to put the clock right and again for the next preset — and on a dial, press to start or pause, turn to adjust by seconds, or push the dial in and turn to adjust by minutes.",

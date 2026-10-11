@@ -29,7 +29,7 @@
  *
  *   npm run icons
  *
- * The mark is likewise not redrawn: it is read from `assets/piy-mark.svg`, the brand's own file.
+ * The mark is likewise not redrawn: it is read from `assets/dc-mark.svg`, the product's own file.
  * SVG is written directly; the PNGs are rasterised by headless Chromium — the copy Playwright
  * already keeps on this machine — rather than ImageMagick, which is not installed and is not
  * something a repo should require for `npm run icons` to work.
@@ -53,14 +53,14 @@ const RED = "#E2342B";
 const WHITE = "#FFFFFF";
 
 /**
- * The brand's own mark file, supplied as artwork rather than transcribed.
+ * The product's mark file, read as artwork rather than transcribed.
  *
  * Read rather than copied in, so the icons cannot drift from it. The old version of this file
  * carried the path data as a literal with a comment promising it matched — a promise nothing
  * checked. `test/mark.test.ts` holds `src/render.ts` to the same file, which is the copy that has
  * to stay a literal because it is bundled into the plugin.
  */
-const MARK_FILE = resolve(ROOT, "assets/piy-mark.svg");
+const MARK_FILE = resolve(ROOT, "assets/dc-mark.svg");
 const MARK = readMark();
 
 /**
@@ -110,7 +110,7 @@ function bareMark(colour) {
 	return (
 		`<svg role="img" xmlns="http://www.w3.org/2000/svg" ` +
 		`viewBox="${round(left)} ${round(top)} ${round(side)} ${round(side)}">` +
-		`<title>Prompt It Yourself</title>${shapes(colour)}</svg>`
+		`<title>Dial It Countdown</title>${shapes(colour)}</svg>`
 	);
 }
 

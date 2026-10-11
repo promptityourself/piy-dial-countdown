@@ -21,7 +21,26 @@ anybody only in 4.1.0.
 
 ## [Unreleased]
 
+## [4.4.0] — 2026-10-11
+
+### Changed
+
+- **The plugin is now called Dial It Countdown, and its mark is D|C.** The actions list, the
+  category and the property inspector say *Dial It Countdown*. An idle clock shows the D|C mark in
+  the middle of its ring, and every icon is drawn from it. It is the P|Y mark of Prompt It
+  Yourself, the same letters' face and the same cursor, with the plugin's own initials. The brand
+  is still Prompt It Yourself: the author, the colour theme and the links do not change.
+
+  Nothing else moves. The plugin keeps its identifier, so every installed copy updates in place and
+  every configured dial and key keeps its settings.
+
 ### Internal
+
+- **The mark is `assets/dc-mark.svg`**, replacing `assets/piy-mark.svg`. It is built by the recipe
+  that builds P|Y, `motion/brand.mjs` in `mergodon/piy-short-production`: Fira Code Medium, its
+  glyph grid at +35% letter spacing, and the cursor 15% past the capitals. The same recipe run on
+  P and Y reproduces the old file byte for byte, so the two marks are siblings and not a redraw.
+  `render.test` now fingerprints the D.
 
 - **A release title keeps its capitals.** `npm run release` lowered the whole headline, so the 3.9.1
   and 3.10.0 titles said "stream deck" and 4.3.0's said "prompt it yourself". It now lowers only the
@@ -1356,7 +1375,8 @@ First stable release.
 - The manifest version had sat at `0.1.0.0` since the first release, so the Stream Deck application
   reported the same version whichever build was installed. It now tracks the release tag.
 
-[Unreleased]: https://github.com/promptityourself/piy-dial-countdown/compare/v4.3.0...HEAD
+[Unreleased]: https://github.com/promptityourself/piy-dial-countdown/compare/v4.4.0...HEAD
+[4.4.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.4.0
 [4.3.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.3.0
 [4.2.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.2.0
 [4.1.0]: https://github.com/promptityourself/piy-dial-countdown/releases/tag/v4.1.0

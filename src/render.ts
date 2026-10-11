@@ -134,7 +134,7 @@ export type RingState = {
 	dimmed: boolean;
 	palette: Palette;
 	/**
-	 * Allow the Prompt It Yourself mark in the middle of the ring.
+	 * Allow the D|C mark in the middle of the ring.
 	 *
 	 * Only ever *allow*: the mark is drawn on a clock that is sitting idle and nothing else. See
 	 * {@link centre} for why the state won the argument over the brand.
@@ -183,23 +183,24 @@ const PULSE_STROKE_RATIO = 0.22;
 const PULSE_OPACITY = 0.9;
 
 /**
- * The Prompt It Yourself mark, as published in the brand's own `piy-mark.svg`: a "P" and a "Y" with
- * a text cursor standing between them — the "I" that was typed and deleted. Kept as bare geometry so
- * it can be recoloured and scaled to sit inside the ring, rather than embedded as a fixed-colour
- * image. The brand fills every part in one colour, never two-tone.
+ * The Dial It Countdown mark, from `assets/dc-mark.svg`: a "D" and a "C" with a text cursor standing
+ * between them — the "I" that was typed and deleted. It is Prompt It Yourself's P|Y, built the same
+ * way from the same face, with the product's initials. Kept as bare geometry so it can be recoloured
+ * and scaled to sit inside the ring, rather than embedded as a fixed-colour image. The brand fills
+ * every part in one colour, never two-tone.
  */
 const MARK_PATHS = [
-	"M44.25 -47.25L44.25 -47.25Q44.25 -52 42.425 -54.85Q40.6 -57.7 37.275 -59Q33.95 -60.3 29.45 -60.3L29.45 -60.3L21.15 -60.3L21.15 -33.45L29.6 -33.45Q33.95 -33.45 37.25 -34.75Q40.55 -36.05 42.4 -39.05Q44.25 -42.05 44.25 -47.25ZM56.45 -47.35L56.45 -47.35Q56.45 -39.3 53.025 -34.3Q49.6 -29.3 43.5 -26.95Q37.4 -24.6 29.5 -24.6L29.5 -24.6L21.15 -24.6L21.15 0L9.55 0L9.55 -69L28.7 -69Q41.7 -69 49.075 -63.675Q56.45 -58.35 56.45 -47.35Z",
-	"M139.85 -69L116.85 -26.35L116.85 0L105.15 0L105.15 -26.25L82.15 -69L94.9 -69L111.25 -36.3L127.7 -69L139.85 -69Z"
+	"M43.9 -34.85L43.9 -34.85Q43.9 -43.1 42.275 -48.1Q40.65 -53.1 37.925 -55.7Q35.2 -58.3 31.875 -59.2Q28.55 -60.1 25.1 -60.1L25.1 -60.1L18.75 -60.1L18.75 -8.8L25.15 -8.8Q28.75 -8.8 32.1 -9.95Q35.45 -11.1 38.125 -13.95Q40.8 -16.8 42.35 -21.875Q43.9 -26.95 43.9 -34.85ZM56.1 -34.85L56.1 -34.85Q56.1 -26.3 54.275 -20.25Q52.45 -14.2 49.275 -10.225Q46.1 -6.25 41.975 -4.025Q37.85 -1.8 33.25 -0.9Q28.65 0 24.05 0L24.05 0L7.15 0L7.15 -69L22.9 -69Q29.2 -69 35.125 -67.65Q41.05 -66.3 45.775 -62.65Q50.5 -59 53.3 -52.3Q56.1 -45.6 56.1 -34.85Z",
+	"M116.8 -70.4L116.8 -70.4Q123.8 -70.4 128.625 -68.575Q133.45 -66.75 137.6 -63.35L137.6 -63.35L131.55 -56.15Q128.45 -58.75 124.9 -60Q121.35 -61.25 117.35 -61.25L117.35 -61.25Q112.2 -61.25 107.85 -58.65Q103.5 -56.05 100.875 -50.2Q98.25 -44.35 98.25 -34.6L98.25 -34.6Q98.25 -25.05 100.75 -19.2Q103.25 -13.35 107.6 -10.7Q111.95 -8.05 117.35 -8.05L117.35 -8.05Q122.9 -8.05 126.55 -9.875Q130.2 -11.7 133 -14L133 -14L138.6 -6.85Q135.15 -3.5 129.85 -1.075Q124.55 1.35 116.95 1.35L116.95 1.35Q108.2 1.35 101.225 -2.775Q94.25 -6.9 90.225 -14.9Q86.2 -22.9 86.2 -34.6L86.2 -34.6Q86.2 -46.2 90.35 -54.175Q94.5 -62.15 101.45 -66.275Q108.4 -70.4 116.8 -70.4Z"
 ] as const;
 
 /** The cursor between the letters, in the same coordinates as {@link MARK_PATHS}. */
 const MARK_CURSOR = { x: 64.75, y: -79.35, width: 11.5, height: 89.7 } as const;
 
 /** Extent of the mark, from the source artwork's viewBox: its ink box, letters and cursor. */
-const MARK_LEFT = 9.55;
+const MARK_LEFT = 7.15;
 const MARK_TOP = -79.35;
-const MARK_WIDTH = 130.3;
+const MARK_WIDTH = 131.45;
 const MARK_HEIGHT = 89.7;
 
 /** Width the mark is drawn at inside the ring, leaving well over the brand's 18% clear space. */

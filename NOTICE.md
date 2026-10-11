@@ -2,9 +2,9 @@
 
 The plugin is [MIT licensed](LICENSE). Two things that licence does not cover:
 
-The Prompt It Yourself name, logo and brand colours are trademarks of Prompt It
-Yourself and are NOT covered by the MIT licence above. The mark itself is
-supplied artwork, kept at `assets/piy-mark.svg`; `tools/make-icons.mjs` reads it
+The Prompt It Yourself and Dial It Countdown names, the D|C mark and the brand
+colours are trademarks of Prompt It Yourself and are NOT covered by the MIT
+licence above. The mark is kept at `assets/dc-mark.svg`; `tools/make-icons.mjs` reads it
 and `src/render.ts` carries the same paths and cursor as a literal, because it is
 bundled and cannot read from disk at runtime.
 

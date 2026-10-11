@@ -37,7 +37,7 @@ describe("the diagnostics report", () => {
 		const report = collectDiagnostics(logDir({ "a.log": "WARN  something went wrong\n" }), PLUGIN_DIR);
 
 		// The real manifest, so this also proves the version is READ rather than defaulted to "unknown".
-		assert.match(report, /^Dial Countdown \d+\.\d+\.\d+\.\d+/m, `the shipped version must be named: ${report}`);
+		assert.match(report, /^Dial It Countdown \d+\.\d+\.\d+\.\d+/m, `the shipped version must be named: ${report}`);
 		assert.match(report, /\d+ cores/, "the machine's size matters for every per-control cost");
 		assert.match(report, /node v\d+/, "and Node's own version, not the kernel's");
 	});

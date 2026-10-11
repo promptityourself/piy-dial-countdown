@@ -432,7 +432,7 @@ const html = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dial Countdown v${version}</title>
+<title>Dial It Countdown v${version}</title>
 <style>
 	:root { color-scheme: dark; }
 	body { background: #131316; color: #d8d8d8; font: 15px/1.6 system-ui, sans-serif; margin: 0; padding: 32px 24px 64px; }
@@ -467,7 +467,7 @@ const html = `<!doctype html>
 <body>
 <main>
 
-<h1>Dial Countdown v${version}</h1>
+<h1>Dial It Countdown v${version}</h1>
 <p class="sub">${today} · <span class="verdict ${failed.length === 0 ? "pass" : "fail"}">${
 	failed.length === 0 ? "all gates passed" : `${failed.length} gate${failed.length === 1 ? "" : "s"} failed`
 }</span></p>
@@ -583,7 +583,7 @@ ${
 
 writeFileSync(resolve(out, "report.html"), html);
 
-const readme = `# Dial Countdown v${version} — release page :package:
+const readme = `# Dial It Countdown v${version} — release page :package:
 
 ${failed.length === 0 ? ":white_check_mark: All gates passed." : `:x: ${failed.length} gate(s) failed: ${failed.map((g) => g.label).join(", ")}.`}
 

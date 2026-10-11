@@ -286,8 +286,8 @@ describe("the key face", () => {
 });
 
 describe("the centre of the ring", () => {
-	/** The start of the P in the mark, which nothing else in a frame draws. */
-	const MARK = "M44.25 -47.25";
+	/** The start of the D in the mark, which nothing else in a frame draws. */
+	const MARK = "M43.9 -34.85";
 	const middle = { ...base, remainingFraction: 0.5, logo: true };
 
 	/** Two bars is a pause; one square is done; a triangle is running. */

@@ -134,7 +134,7 @@ export function collectDiagnostics(
 	host: HostInfo = {}
 ): string {
 	const lines: string[] = [];
-	lines.push(`Dial Countdown ${pluginVersion(pluginDir)}`);
+	lines.push(`Dial It Countdown ${pluginVersion(pluginDir)}`);
 	// `process.version` is Node's. `os.version()` is the KERNEL's, and on Linux it reads as a
 	// plausible Node version while being nothing of the sort — it printed `node #139-Ubuntu SMP` here.
 	lines.push(
