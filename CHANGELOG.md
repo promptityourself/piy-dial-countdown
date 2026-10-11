@@ -23,17 +23,35 @@ anybody only in 4.1.0.
 
 ## [5.0.0] — 2026-10-11
 
-### Changed
+The first release of Dial It Countdown: countdown timers for Stream Deck dials and keys, from
+Prompt It Yourself.
 
-- **Dial It Countdown is a new plugin, with its own Marketplace listing.** It has a new identifier,
-  `com.promptityourself.dial-it-countdown`, so Stream Deck treats it as a different plugin from
-  Dial Countdown. **Nothing carries across:** place the actions again and type your presets
-  again. Everything else is 4.5.0: every timer, gesture, setting and the D|C mark.
+### Added
 
-  Dial Countdown keeps working beside it, under its own name, and gets no more updates. Its
-  settings panel says so. Remove it from Stream Deck's preferences when you no longer need it.
+- **A countdown timer on every dial and every key.** Each control keeps its own timer, its own
+  presets, its own colour theme and its own display.
+
+- **The dial:** turn for seconds, push the dial in and turn for minutes, press to start or pause.
+
+- **Three gestures, the same on the touchscreen and on a key:** tap to pause or resume, tap twice
+  to reset to full, hold to put the clock right and then to go to the next preset.
+
+- **A preset can be a list.** Type `40, 10, 10` and each step starts when the last one ends. Up to
+  twenty steps, each from one second to twenty-four hours.
+
+- **An alert at the end of every step.** A press silences it and does nothing else. The dial
+  shows a bell and a key says `ringing` while it sounds.
+
+- **Seven colour themes, a ring or a bar on the touchscreen, a name for each timer** and the
+  finish time on screen.
 
 ### Internal
+
+- **A new plugin, not an update of Dial Countdown.** It has its own identifier,
+  `com.promptityourself.dial-it-countdown`, and its own Marketplace listing, so nothing carries
+  across from Dial Countdown: its users place the actions again and type their presets again. The
+  code is Dial Countdown 4.5.0 under the new identifier. Dial Countdown stays on its own listing,
+  frozen at 4.5.0, and its settings panel points here.
 
 - **One test holds every copy of the identifier to the manifest.** `test/identity.test.ts`
   checks the folder name, both action identifiers, the two `@action` decorators, and the build,
