@@ -349,6 +349,13 @@ layout files, so **re-run them when a release changes what a screen shows**, and
 copy against `docs/how-it-works.md`. The 3.0.1 set described a reset and a repeat mode that 4.0.0
 removed, and it stayed on the listing through ten releases.
 
+**Elgato reviews the images, and a light shadow under the device fails review.** The 5.0.0 listing
+came back on 2026-10-13 for "the white shadow beneath the featured Stream Deck + XL images". The
+product photo is shot on white with a grey studio shadow; cutting only the pure white left that
+shadow opaque, and on the dark slides it reads as white. `pipeline/dewhite.html` now turns
+everything the flood reaches into black at the opacity its darkness implies. Its threshold is
+`t: 120` in `pipeline/run-dewhite.mjs`; at 96 the flood ate the stand's lit top face.
+
 ### The listing description is a different field, with a different limit
 
 **The notes and the description are not the same box.** The notes describe one version and are capped
