@@ -444,7 +444,7 @@ submission page had to ship with a caveat instead of an answer.
 | --- | --- | --- |
 | 2.0.1 | 2026-08-20 | inferred, not proven — [#15](https://github.com/promptityourself/piy-dial-countdown/issues/15) reasons about the listing "still showing 2.0.1", which only holds if it went up. The folder on the share is a page prepared *for* the upload, which is not the same as evidence of one |
 | 3.2.0 | 2026-08-31 | comment on [#15](https://github.com/promptityourself/piy-dial-countdown/issues/15) |
-| 5.0.0 | 2026-10-11 | the **new** listing, `com.promptityourself.dial-it-countdown` — mate in session: "oke submitted". He did not name the listing; the new one is inferred from the order the pages give, since 4.5.0 waits for its approval |
+| 5.0.0 | 2026-10-11 | the **new** listing, `com.promptityourself.dial-it-countdown` — mate in session: "oke submitted". Confirmed by Elgato's review email of 2026-10-13, which names "Dial It Countdown 5". That review asked for changes (a white shadow under the device in two images, see *The store images*); the fixed images went onto the new-listing page the same day, and the resubmission is not recorded yet |
 
 3.0.0 was tagged and never submitted, which the 3.0.1 changelog entry says outright. **Whether 3.0.1
 itself was submitted is not recorded anywhere and is not known** — a submission page was prepared for
