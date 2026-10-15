@@ -50,7 +50,7 @@ incompatibly, add a new one and hide the old with `VisibleInActionsList: false`.
 | UUID | Releases | What happened to it |
 | --- | --- | --- |
 | `com.matewishkey.dial-countdown` | to 1.5.1 | Spent. The listing was deleted to re-upload from scratch, and the Maker dashboard then rejected the same UUID as "not available or invalid" |
-| `com.matewishkey.dial-countdown-v2` | 2.0.0 to 4.5.0 | Frozen. Its listing stays up; 4.5.0 is its last release, and its settings panel tells users to move |
+| `com.matewishkey.dial-countdown-v2` | 2.0.0 to 4.5.0 | Frozen. Its listing stays up; 4.5.0 is its last release, its settings panel tells users to move, and since 2026-10-15 its description opens with a notice naming Dial It Countdown as the replacement |
 | `com.promptityourself.dial-it-countdown` | 5.0.0 on | Current, on a new listing |
 
 The second change was mate's call on 2026-10-11, when the plugin was renamed Dial It Countdown and
