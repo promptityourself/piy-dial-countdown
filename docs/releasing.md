@@ -375,8 +375,9 @@ editing it is a release rather than a copy edit.
 
 The current text is on the share, with its character count and a copy box:
 `~/share/work/pro-piy-dial-countdown/2026-10-11_new-listing/`, with every other field and image the
-new listing takes. The frozen Dial Countdown listing has its own last text, which only sends its
-users to the new plugin: `2026-10-11_old-listing/`, for after the new listing is approved. Pages
+new listing takes. The frozen Dial Countdown listing carries a replacement notice at the top of its
+description, live since 2026-10-15: `2026-10-15_retire-old-listing/`. That page, not the earlier
+`2026-10-11_old-listing/` draft, is what was pasted. Pages
 from before the 4.3.0 rebrand are under `mat-mwk-dial-countdown/`, the folder the old remote mapped
 to.
 
